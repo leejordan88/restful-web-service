@@ -3,6 +3,7 @@ package com.example.restfulwebservice.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User save(@RequestBody User user) {
+    public User save(@RequestBody @Valid User user) {
         System.out.println(user);
         return userDaoService.save(user);
     }
