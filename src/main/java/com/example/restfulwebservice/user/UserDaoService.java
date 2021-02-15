@@ -37,4 +37,14 @@ public class UserDaoService {
         USERS.add(user);
         return user;
     }
+
+    public Optional<User> deleteById(int id) {
+        Optional<User> byId = findById(id);
+        if (byId.isPresent()) {
+            User user = byId.get();
+            USERS.remove(user);
+        }
+        return byId;
+    }
+
 }
