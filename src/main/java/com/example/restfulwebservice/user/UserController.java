@@ -21,7 +21,7 @@ public class UserController {
     public User findById(@PathVariable int id) {
         Optional<User> byId = userDaoService.findById(id);
         if (byId.isEmpty()) {
-            return null;
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
         return byId.get();
     }
